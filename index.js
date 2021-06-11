@@ -49,21 +49,21 @@ app.get('/times',function(req, res)  {
 //busca no banco de dados usando o id, ou seja, busca cada linha da matriz em especifico
   app.get('/times/:id', function(req, res){
      const id = req.params.id - 1;
-     const mensagem = times [id];
-     if (!mensagem){
-       res.send("mensagem nao encontrada");
+     const time = times [id];
+     if (!time){
+       res.send("time nao encontrada");
             }
             else {
-              res.send(mensagem);
+              res.send(time);
             }
   }
   );
 
   //adciona um time na matriz 
   app.post('/times', (req,res) =>{
-       console.log(req.body.mensagem);
-       const mensagem = req.body.mensagem;
-       times.push(mensagem);
+       console.log(req.body.time);
+       const time = req.body.time;
+       times.push(time);
        res.send("Adcionar um time")
   }
   );
@@ -72,8 +72,8 @@ app.get('/times',function(req, res)  {
   app.put('/times/:id', 
      (req, res) => {
        const id = req.params.id -1;
-       const mensagem = req.body.mensagem;
-       times[id] = mensagem;
+       const time = req.body.time;
+       times[id] = time;
        res.send("time atulizado com sucesso")
      }
   )
